@@ -25,8 +25,10 @@ const Pictures = () => {
   }, []);
 
   const getTransformValue = (index) => {
-    // Здесь вы можете настроить волнообразное изменение положения картинок в зависимости от индекса
-    return `translateY(${Math.sin(scrollOffset / 200 + index) * 50}px)`;
+    const translateY = Math.sin((scrollOffset + index * 100) / 200) * 200;
+    const scale = 1 - Math.abs(translateY / 1000);
+
+    return `translateY(${translateY}px) scale(${scale})`;
   };
 
   return (
